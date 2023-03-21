@@ -1,9 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const HeaderContainer = styled.header`
   background: ${(props) => props.theme["gray-900"]};
   padding: 2.5rem 0 7.5rem;
 `;
+
 
 export const HeaderContent = styled.div`
  width: 100%;
@@ -29,4 +30,5 @@ export const NewTransactionButton = styled.button`
   background: ${props => props.theme['green-300']};
   transition: background-color 0.5s;
  }
-`
+
+`;
