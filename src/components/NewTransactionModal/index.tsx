@@ -1,5 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog'
-
+import { useContextSelector } from 'use-context-selector' 
 import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react'
 import {
   CloseButton,
@@ -11,7 +11,6 @@ import {
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Controller, useForm } from 'react-hook-form'
-import { useContext } from 'react'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
 
 const newTransactionFormSchema = z.object({
@@ -24,7 +23,9 @@ const newTransactionFormSchema = z.object({
 type NewTransactionFormInputs = z.infer<typeof newTransactionFormSchema>
 
 export function NewTransactionModal() {
-  const { createTransactions } = useContext(TransactionsContext)
+  const createTransactions  = useContextSelector(TransactionsContext, (context) => {
+    return context.createTransactions
+  })
 
   const {
     control,
